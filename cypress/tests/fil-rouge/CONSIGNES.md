@@ -25,6 +25,31 @@ La configuration Cypress est déjà faite :
 - `apiUrl` : `http://localhost:3001` (variable d'environnement)
 - Commandes personnalisées déjà disponibles : `cy.getBySel()`, `cy.getBySelLike()`, `cy.login()`, `cy.loginByApi()`, `cy.database()`
 
+### Commandes personnalisées — Détails importants
+
+| Commande | Comportement |
+|----------|-------------|
+| `cy.login('Heath93', 's3cret')` | Se connecte **via l'UI** : visite `/signin`, tape les identifiants, clique sur "Sign In". Déclenche des requêtes HTTP. |
+| `cy.loginByApi('Heath93')` | Se connecte **via une requête HTTP** `POST /login` (sans charger la page). Plus rapide, utilisé pour les tests API. |
+| `cy.database('find', 'users', { username: 'Heath93' })` | Requête directe à la base de données SQLite. Retourne l'objet utilisateur complet (avec `id`). |
+
+> ⚠️ **`cy.login()` charge la page de connexion.** Si tu as besoin de charger une autre page après, utilise `cy.visit('/')`.
+>
+> ⚠️ **`GET /users` exclut l'utilisateur connecté** de la liste. Pour récupérer ton propre `id`, utilise `cy.database('find', 'users', { username: '...' })`.
+
+### `cy.intercept()` — Pièges courants
+
+- Utilise le préfixe `**/` dans les patterns URL pour matcher toute URL contenant ce chemin :
+  ```javascript
+  // ✅ Bon — matche http://localhost:3001/transactions/public?page=1...
+  cy.intercept('GET', '**/transactions/public*')
+
+  // ❌ Risqué — peut ne pas matcher selon la configuration
+  cy.intercept('GET', '/transactions/public*')
+  ```
+- La page d'accueil charge `/transactions/public` (pas `/transactions`)
+- `cy.intercept()` doit être appelé **AVANT** que la requête ne parte
+
 ---
 
 ## Étape 1 — Récupérer le projet sur ton ordinateur
@@ -266,10 +291,12 @@ cy.get('[data-test*="transaction-item"]')   // partiel (contient)
 - `bankName-input` (partiel) — champ nom de banque
 - `routingNumber-input` (partiel) — champ routing number
 - `accountNumber-input` (partiel) — champ account number
+- ⚠️ Pour les champs de saisie du formulaire bancaire, le `data-test` est sur le **wrapper div**, pas sur l'input. Il faut ajouter `.find('input')` pour cibler le vrai champ. Exemple : `cy.getBySelLike('bankName-input').find('input').type('...')`
 
 **Paramètres utilisateur :**
 - `user-settings-form` — le formulaire
 - `user-settings-submit` — bouton "Save"
+- ⚠️ Les champs du formulaire (firstName, lastName, email, phoneNumber) n'ont **pas** d'attribut `data-test` sur l'input. Il faut utiliser `cy.get("input[name='firstName']")` pour les cibler.
 
 **Onboarding (première connexion) :**
 - `user-onboarding-dialog` — le dialog
