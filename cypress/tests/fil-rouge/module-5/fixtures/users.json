@@ -1,0 +1,30 @@
+{
+  "validUser": {
+    "username": "Heath93",
+    "password": "s3cret"
+  },
+  "secondUser": {
+    "username": "Arvilla_Hegmann",
+    "password": "s3cret"
+  },
+  "thirdUser": {
+    "username": "Dina20",
+    "password": "s3cret"
+  },
+  "fourthUser": {
+    "username": "Reyes.Osinski",
+    "password": "s3cret"
+  },
+  "fifthUser": {
+    "username": "Judah_Dietrich50",
+    "password": "s3cret"
+  },
+  "invalidUser": {
+    "username": "Heath93",
+    "password": "mauvais_mdp"
+  },
+  "unknownUser": {
+    "username": "utilisateur_inconnu_999",
+    "password": "s3cret"
+  }
+}

@@ -206,7 +206,7 @@
       "bankName": "Waters, King and O'Reilly Bank",
       "accountNumber": "7774132232",
       "routingNumber": "996645387",
-      "isDeleted": false,
+      "isDeleted": true,
       "createdAt": "2023-03-28T21:55:07.857Z",
       "modifiedAt": "2024-03-07T20:50:34.541Z"
     },
@@ -253,6 +253,17 @@
       "isDeleted": false,
       "createdAt": "2024-01-26T14:01:01.815Z",
       "modifiedAt": "2024-03-07T08:44:31.174Z"
+    },
+    {
+      "id": "NciGqfTEN",
+      "uuid": "cb1e1c3f-3731-4f9e-8892-8d4fb7c7c630",
+      "userId": "uBmeaz5pX",
+      "bankName": "Austin ",
+      "accountNumber": "245656562",
+      "routingNumber": "123456765",
+      "isDeleted": false,
+      "createdAt": "2026-03-14T07:00:28.199Z",
+      "modifiedAt": "2026-03-14T07:00:28.199Z"
     }
   ],
   "transactions": [
@@ -9855,6 +9866,19 @@
       "requestResolvedAt": "",
       "createdAt": "2023-11-10T07:15:28.127Z",
       "modifiedAt": "2024-03-07T21:58:09.668Z"
+    },
+    {
+      "id": "Op9if0KYo",
+      "uuid": "f5853179-60d9-40b4-8571-c3b6e32adc8b",
+      "amount": 500000,
+      "description": "test",
+      "receiverId": "GjWovtg2hr",
+      "senderId": "uBmeaz5pX",
+      "privacyLevel": "public",
+      "status": "pending",
+      "requestStatus": "pending",
+      "createdAt": "2026-03-14T06:26:29.081Z",
+      "modifiedAt": "2026-03-14T06:26:29.081Z"
     }
   ],
   "likes": [
@@ -10038,7 +10062,7 @@
       "userId": "uBmeaz5pX",
       "likeId": "uMrgeJ4MvkFl",
       "transactionId": "tHql3-JH3OSd",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2023-10-18T08:33:08.846Z",
       "modifiedAt": "2024-03-07T19:37:59.120Z"
     },
@@ -10068,7 +10092,7 @@
       "userId": "uBmeaz5pX",
       "transactionId": "aEcgez2VkA80",
       "status": "requested",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2023-07-05T03:15:01.172Z",
       "modifiedAt": "2024-03-07T16:19:03.624Z"
     },
@@ -10078,7 +10102,7 @@
       "userId": "uBmeaz5pX",
       "transactionId": "5XZ9RwhG4qW9",
       "status": "requested",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2023-08-11T23:52:20.091Z",
       "modifiedAt": "2024-03-07T17:46:49.361Z"
     },
@@ -10088,7 +10112,7 @@
       "userId": "uBmeaz5pX",
       "transactionId": "aDr0BREY0gF8",
       "status": "received",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2023-11-15T04:43:11.932Z",
       "modifiedAt": "2024-03-07T13:20:41.533Z"
     },
@@ -10108,7 +10132,7 @@
       "userId": "uBmeaz5pX",
       "transactionId": "5XZ9RwhG4qW9",
       "status": "received",
-      "isRead": false,
+      "isRead": true,
       "createdAt": "2023-12-23T08:41:46.540Z",
       "modifiedAt": "2024-03-07T16:57:39.419Z"
     },
@@ -10431,6 +10455,16 @@
       "isRead": false,
       "createdAt": "2024-02-01T18:53:45.699Z",
       "modifiedAt": "2024-03-07T17:13:52.110Z"
+    },
+    {
+      "id": "MLtwyuQ3Te",
+      "uuid": "a297a027-0845-4840-8602-142d1b21df07",
+      "userId": "GjWovtg2hr",
+      "transactionId": "Op9if0KYo",
+      "status": "requested",
+      "isRead": false,
+      "createdAt": "2026-03-14T06:26:29.088Z",
+      "modifiedAt": "2026-03-14T06:26:29.088Z"
     }
   ],
   "banktransfers": [

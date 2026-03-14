@@ -1,0 +1,12 @@
+{
+  "validAccount": {
+    "bankName": "Banque Nationale de Test",
+    "routingNumber": "123456789",
+    "accountNumber": "987654321"
+  },
+  "invalidAccount": {
+    "bankName": "",
+    "routingNumber": "123",
+    "accountNumber": "456"
+  }
+}

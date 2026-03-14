@@ -1,0 +1,90 @@
+/**
+ * ============================================================
+ * TP FIL ROUGE — MODULE 6 : Pipeline Jenkins (CI)
+ * ============================================================
+ *
+ * OBJECTIF :
+ * Configurer un pipeline Jenkins pour exécuter les tests Cypress
+ * automatiquement à chaque push sur GitHub.
+ *
+ * CONSIGNES :
+ * 1. Copie ce fichier à la RACINE du projet (pas dans cypress/)
+ * 2. Configure un job Jenkins de type "Pipeline"
+ * 3. Pointe vers ton repo GitHub
+ * 4. Jenkins va détecter ce Jenkinsfile et exécuter le pipeline
+ * ============================================================
+ */
+
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJS'  // Assure-toi que NodeJS est configuré dans Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Récupérer le code depuis GitHub
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install --legacy-peer-deps'
+            }
+        }
+
+        stage('Seed Database') {
+            steps {
+                sh 'npx ts-node scripts/seedData.ts'
+            }
+        }
+
+        stage('Start Application') {
+            steps {
+                // Lancer l'app en arrière-plan
+                sh 'npm run dev &'
+                // Attendre que l'app soit prête
+                sh 'npx wait-on http://localhost:3000 --timeout 60000'
+            }
+        }
+
+        stage('Run Cypress Tests') {
+            steps {
+                sh '''
+                    npx cypress run \
+                        --spec "cypress/tests/fil-rouge/**/*.cy.js" \
+                        --reporter mochawesome \
+                        --reporter-options reportDir=cypress/reports,overwrite=false,html=true,json=true
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            // Publier les rapports de test
+            publishHTML(target: [
+                reportDir: 'cypress/reports',
+                reportFiles: '*.html',
+                reportName: 'Cypress Test Report',
+                keepAll: true,
+                alwaysLinkToLastBuild: true
+            ])
+
+            // Archiver les screenshots et vidéos en cas d'échec
+            archiveArtifacts artifacts: 'cypress/screenshots/**/*.png', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', allowEmptyArchive: true
+        }
+
+        success {
+            echo '✅ Tous les tests Cypress sont passés !'
+        }
+
+        failure {
+            echo '❌ Des tests Cypress ont échoué. Vérifier les rapports.'
+        }
+    }
+}

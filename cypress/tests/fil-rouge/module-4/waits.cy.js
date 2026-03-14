@@ -1,0 +1,138 @@
+/**
+ * ============================================================
+ * TP FIL ROUGE — MODULE 4 : Timeouts et Temps d'attente
+ * ============================================================
+ *
+ * OBJECTIF :
+ * Comprendre et utiliser les mécanismes d'attente dans Cypress :
+ * - Timeout par défaut vs timeout personnalisé
+ * - cy.wait() avec des alias d'intercept
+ * - cy.intercept() pour observer les requêtes réseau
+ *
+ * CONCEPTS PRATIQUES :
+ * - cy.intercept('GET', '/url*').as('alias')  → intercepter une requête
+ * - cy.wait('@alias')                         → attendre que la requête soit faite
+ * - { timeout: 10000 }                        → timeout personnalisé sur un get
+ * ============================================================
+ */
+
+describe("Gestion des temps d'attente", () => {
+  beforeEach(() => {
+    cy.task("db:seed");
+  });
+
+  // ──────────────────────────────────────────────
+  // SC63 — Timeout personnalisé sur un élément
+  // ──────────────────────────────────────────────
+  it("SC63 - devrait attendre le chargement de la liste avec un timeout personnalisé", () => {
+    // TODO :
+    // 1. Se connecter
+    cy.login("Heath93", "s3cret");
+    // 2. Attendre que la liste de transactions soit visible avec un timeout de 10 secondes
+    //    Par défaut, Cypress attend 4 secondes. Ici on étend à 10 secondes.
+    //    cy.getBySel('transaction-list', { timeout: 10000 })
+    //      .should('be.visible')
+    // 3. Loguer un message de succès
+    //    cy.log('La liste a chargé dans les 10 secondes')
+  });
+
+  // ──────────────────────────────────────────────
+  // SC64 — Intercepter une requête GET et attendre sa réponse
+  // ──────────────────────────────────────────────
+  it("SC64 - devrait intercepter le chargement des transactions et vérifier la réponse", () => {
+    // TODO :
+    // 1. Intercepter la requête GET vers /transactions
+    //    cy.intercept('GET', '/transactions*').as('getTransactions')
+    // 2. Se connecter (ce qui déclenche le chargement des transactions)
+    //    cy.login('Heath93', 's3cret')
+    // 3. Attendre que la requête soit terminée
+    //    cy.wait('@getTransactions')
+    // 4. Vérifier la réponse
+    //    cy.wait('@getTransactions').then((interception) => {
+    //      // Vérifier le status code
+    //      expect(interception.response.statusCode).to.eq(200)
+    //      // Loguer le nombre de transactions reçues
+    //      cy.log('Transactions reçues : ' + JSON.stringify(interception.response.body))
+    //    })
+    // 5. Vérifier que la liste s'affiche après le chargement
+    //    cy.getBySel('transaction-list').should('be.visible')
+  });
+
+  // ──────────────────────────────────────────────
+  // SC65 — Intercepter une requête POST (création de transaction)
+  // ──────────────────────────────────────────────
+  it("SC65 - devrait intercepter la création d'une transaction et vérifier le body envoyé", () => {
+    // TODO :
+    // 1. Intercepter la requête POST vers /transactions
+    //    cy.intercept('POST', '/transactions').as('createTransaction')
+    // 2. Se connecter
+    //    cy.login('Heath93', 's3cret')
+    // 3. Créer un paiement via l'UI
+    //    cy.getBySel('nav-top-new-transaction').click()
+    //    cy.getBySelLike('user-list-item').first().click()
+    //    cy.get('#amount').type('35')
+    //    cy.get('#transaction-create-description-input').type('Test intercept')
+    //    cy.getBySel('transaction-create-submit-payment').click()
+    // 4. Attendre l'interception et vérifier le body de la requête
+    //    cy.wait('@createTransaction').then((interception) => {
+    //      expect(interception.request.body).to.have.property('amount')
+    //      expect(interception.request.body).to.have.property('description')
+    //      expect(interception.request.body.description).to.eq('Test intercept')
+    //      expect(interception.response.statusCode).to.eq(200)
+    //      cy.log('Transaction créée avec succès !')
+    //    })
+  });
+
+  // ──────────────────────────────────────────────
+  // SC66 — Intercepter la requête de login
+  // ──────────────────────────────────────────────
+  it("SC66 - devrait intercepter le login et vérifier la réponse avec le user ID", () => {
+    // TODO :
+    // 1. Intercepter la requête POST /login
+    //    cy.intercept('POST', '/login').as('loginRequest')
+    // 2. Visiter /signin et remplir le formulaire
+    //    cy.visit('/signin')
+    //    cy.getBySel('signin-username').type('Heath93')
+    //    cy.getBySel('signin-password').type('s3cret')
+    //    cy.getBySel('signin-submit').click()
+    // 3. Attendre et vérifier la réponse
+    //    cy.wait('@loginRequest').then((interception) => {
+    //      // Vérifier que la requête a envoyé le bon username
+    //      expect(interception.request.body.username).to.eq('Heath93')
+    //      // Vérifier que la réponse contient un user
+    //      expect(interception.response.body.user).to.have.property('id')
+    //      cy.log('User ID : ' + interception.response.body.user.id)
+    //    })
+  });
+
+  // ──────────────────────────────────────────────
+  // SC67 — Intercepter les notifications
+  // ──────────────────────────────────────────────
+  it("SC67 - devrait intercepter le chargement des notifications", () => {
+    // TODO :
+    // 1. Intercepter GET /notifications
+    //    cy.intercept('GET', '/notifications*').as('getNotifications')
+    // 2. Se connecter
+    //    cy.login('Heath93', 's3cret')
+    // 3. Attendre le chargement des notifications
+    //    cy.wait('@getNotifications')
+    // 4. Vérifier le status
+    //    cy.wait('@getNotifications').then((interception) => {
+    //      expect(interception.response.statusCode).to.eq(200)
+    //    })
+  });
+
+  // ──────────────────────────────────────────────
+  // SC68 — Attendre le skeleton loader
+  // ──────────────────────────────────────────────
+  it("SC68 - devrait vérifier que le skeleton loader disparaît après chargement", () => {
+    // TODO :
+    // 1. Se connecter
+    cy.login("Heath93", "s3cret");
+    // 2. Vérifier que le skeleton (loader) disparaît
+    //    Le skeleton est affiché pendant le chargement puis disparaît
+    //    cy.getBySel('list-skeleton').should('not.exist')
+    // 3. Vérifier que le contenu est maintenant visible
+    //    cy.getBySelLike('transaction-item').should('have.length.greaterThan', 0)
+  });
+});

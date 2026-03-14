@@ -1,0 +1,18 @@
+{
+  "payment": {
+    "amount": "50",
+    "description": "Remboursement restaurant"
+  },
+  "request": {
+    "amount": "30",
+    "description": "Part du cinéma"
+  },
+  "smallPayment": {
+    "amount": "5",
+    "description": "Café"
+  },
+  "largePayment": {
+    "amount": "500",
+    "description": "Loyer du mois"
+  }
+}
