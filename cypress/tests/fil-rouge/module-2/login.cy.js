@@ -33,8 +33,8 @@ describe("Connexion utilisateur", () => {
   // ──────────────────────────────────────────────
   it("SC07 - devrait afficher la page de connexion avec les champs requis", () => {
     // TODO :
-    // 1. Vérifier que le titre "Sign In" est visible
-    //    cy.contains('h1', 'Sign In').should('be.visible')
+    // 1. Vérifier que le titre "Sign in" est visible (attention au "i" minuscule !)
+    //    cy.contains('h1', 'Sign in').should('be.visible')
     // 2. Vérifier que le champ username est visible
     // 3. Vérifier que le champ password est visible
     // 4. Vérifier que le bouton "Sign In" est visible
@@ -83,14 +83,16 @@ describe("Connexion utilisateur", () => {
   // ──────────────────────────────────────────────
   // SC11 — Champs vides
   // ──────────────────────────────────────────────
-  it("SC11 - devrait désactiver le bouton si les champs sont vides", () => {
+  it("SC11 - devrait afficher une erreur et désactiver le bouton si les champs sont vides", () => {
     // TODO :
-    // 1. Sans rien taper, vérifier que le bouton "Sign In" est disabled
+    // 1. Cliquer sur le bouton "Sign In" sans rien remplir
+    //    cy.getBySel('signin-submit').click()
+    // 2. Vérifier que le message "Username is required" apparaît
+    //    cy.get('#username-helper-text').should('be.visible').and('contain', 'Username is required')
+    // 3. Vérifier que le bouton est maintenant disabled (grisé)
     //    cy.getBySel('signin-submit').should('be.disabled')
-    // 2. Taper seulement le username
-    // 3. Vérifier que le bouton est toujours disabled
-    // 4. Taper aussi le password
-    // 5. Vérifier que le bouton est maintenant enabled
+    // 4. Taper le username → bouton toujours disabled
+    // 5. Taper aussi le password → bouton enabled
     //    cy.getBySel('signin-submit').should('not.be.disabled')
   });
 
@@ -99,9 +101,11 @@ describe("Connexion utilisateur", () => {
   // ──────────────────────────────────────────────
   it("SC12 - devrait afficher une erreur si le username est effacé après saisie", () => {
     // TODO :
-    // 1. Taper "test" dans le champ username
-    // 2. Effacer le contenu avec .clear()
+    // 1. Cibler le vrai champ <input> dans le composant username
+    //    cy.getBySel('signin-username').find('input')
+    // 2. Taper "test" puis effacer avec .clear()
     // 3. Cliquer ailleurs (sur le champ password par exemple)
+    //    cy.getBySel('signin-password').find('input').click()
     // 4. Vérifier le message d'erreur de validation
     //    cy.get('#username-helper-text').should('be.visible')
   });

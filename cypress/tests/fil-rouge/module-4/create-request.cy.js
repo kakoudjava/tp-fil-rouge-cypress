@@ -37,10 +37,8 @@ describe("Demander un paiement (Request)", () => {
     // 4. Remplir montant (30) et description ("Remboursement cinéma")
     // 5. Cliquer sur "Request" (PAS "Pay")
     //    cy.getBySel('transaction-create-submit-request').click()
-    // 6. Vérifier le message "Requested"
-    //    cy.get('[data-test="alert-bar-success"]')
-    //      .should('be.visible')
-    //      .and('contain', 'Requested')
+    // 6. Vérifier que le message de confirmation contient "Requested"
+    //    cy.contains('Requested').should('be.visible')
   });
 
   // ──────────────────────────────────────────────

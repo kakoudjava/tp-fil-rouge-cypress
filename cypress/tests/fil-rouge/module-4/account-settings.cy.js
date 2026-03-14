@@ -8,11 +8,17 @@
  *
  * RAPPEL DES SELECTEURS :
  * - cy.getBySel('user-settings-form')
- * - cy.getBySelLike('firstName').find('input')
- * - cy.getBySelLike('lastName').find('input')
- * - cy.getBySelLike('email').find('input')
- * - cy.getBySelLike('phoneNumber').find('input')
+ * - cy.get("input[name='firstName']")     → champ prénom
+ * - cy.get("input[name='lastName']")      → champ nom
+ * - cy.get("input[name='email']")         → champ email
+ * - cy.get("input[name='phoneNumber']")   → champ téléphone
  * - cy.getBySel('user-settings-submit')
+ *
+ * ASTUCE :
+ * Sur cette page, les champs du formulaire n'ont pas d'attribut
+ * data-test directement sur l'input. On utilise donc
+ * cy.get("input[name='...']") pour les cibler.
+ * .invoke('val') permet de récupérer la valeur actuelle d'un input.
  * ============================================================
  */
 
@@ -29,12 +35,12 @@ describe("Paramètres du compte utilisateur", () => {
   // ──────────────────────────────────────────────
   // SC69 — Affichage du formulaire
   // ──────────────────────────────────────────────
-  it("SC69 - devrait afficher le formulaire de paramètres avec les champs pré-remplis", () => {
+  it("SC69 - devrait afficher le formulaire avec les champs pré-remplis", () => {
     // TODO :
     // 1. Vérifier que le formulaire est visible
     //    cy.getBySel('user-settings-form').should('be.visible')
     // 2. Vérifier que le champ "First Name" contient une valeur
-    //    cy.getBySelLike('firstName').find('input')
+    //    cy.get("input[name='firstName']")
     //      .invoke('val')
     //      .should('not.be.empty')
     // 3. Vérifier "Last Name"
@@ -48,7 +54,7 @@ describe("Paramètres du compte utilisateur", () => {
   it("SC70 - devrait modifier le prénom et sauvegarder", () => {
     // TODO :
     // 1. Effacer le champ "First Name" et taper un nouveau prénom
-    //    cy.getBySelLike('firstName').find('input').clear().type('TestPrenom')
+    //    cy.get("input[name='firstName']").clear().type('TestPrenom')
     // 2. Cliquer sur "Save"
     //    cy.getBySel('user-settings-submit').click()
     // 3. Vérifier que le nom dans la sidebar a changé
@@ -61,12 +67,12 @@ describe("Paramètres du compte utilisateur", () => {
   it("SC71 - devrait modifier l'email et sauvegarder", () => {
     // TODO :
     // 1. Effacer le champ email et taper un nouveau
-    //    cy.getBySelLike('email').find('input').clear().type('nouveau@test.com')
+    //    cy.get("input[name='email']").clear().type('nouveau@test.com')
     // 2. Sauvegarder
     //    cy.getBySel('user-settings-submit').click()
     // 3. Recharger la page et vérifier que l'email est persisté
     //    cy.reload()
-    //    cy.getBySelLike('email').find('input')
+    //    cy.get("input[name='email']")
     //      .invoke('val')
     //      .should('eq', 'nouveau@test.com')
   });
@@ -77,9 +83,9 @@ describe("Paramètres du compte utilisateur", () => {
   it("SC72 - devrait afficher une erreur si l'email est invalide", () => {
     // TODO :
     // 1. Effacer l'email et taper "pas-un-email"
-    //    cy.getBySelLike('email').find('input').clear().type('pas-un-email')
-    // 2. Cliquer ailleurs
-    //    cy.getBySelLike('firstName').find('input').click()
+    //    cy.get("input[name='email']").clear().type('pas-un-email')
+    // 2. Cliquer ailleurs pour déclencher la validation
+    //    cy.get("input[name='firstName']").click()
     // 3. Vérifier le message d'erreur
     //    cy.get('#user-settings-email-input-helper-text')
     //      .should('be.visible')
@@ -94,11 +100,12 @@ describe("Paramètres du compte utilisateur", () => {
   it("SC73 - devrait afficher une erreur si le numéro de téléphone est invalide", () => {
     // TODO :
     // 1. Effacer le téléphone et taper "abc"
-    //    cy.getBySelLike('phoneNumber').find('input').clear().type('abc')
+    //    cy.get("input[name='phoneNumber']").clear().type('abc')
     // 2. Cliquer ailleurs
+    //    cy.get("input[name='firstName']").click()
     // 3. Vérifier le message d'erreur
     //    cy.get('#user-settings-phoneNumber-input-helper-text')
     //      .should('be.visible')
-    //      .and('contain', 'Must contain a valid phone number')
+    //      .and('contain', 'Phone number is not valid')
   });
 });

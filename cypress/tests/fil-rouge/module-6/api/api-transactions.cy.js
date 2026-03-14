@@ -99,29 +99,33 @@ describe("API — Transactions", () => {
   // ──────────────────────────────────────────────
   it("SC89 - POST /transactions - devrait créer une nouvelle transaction", () => {
     // TODO :
-    // 1. D'abord, récupérer les utilisateurs pour avoir les IDs
-    // cy.request('GET', `${apiUrl}/users`)
-    //   .then((response) => {
-    //     const sender = response.body.results.find(u => u.username === 'Heath93')
+    // ⚠️ ATTENTION : GET /users retourne tous les utilisateurs SAUF l'utilisateur connecté !
+    // Pour récupérer l'ID de Heath93 (notre propre utilisateur), on utilise cy.database()
+    //
+    // 1. Récupérer l'ID de l'utilisateur connecté via la base de données
+    // cy.database('find', 'users', { username: 'Heath93' }).then((sender) => {
+    //
+    //   // 2. Récupérer les autres utilisateurs via l'API
+    //   cy.request('GET', `${apiUrl}/users`).then((response) => {
     //     const receiver = response.body.results.find(u => u.username === 'Arvilla_Hegmann')
     //
-    //     // 2. Créer la transaction
-    //     return cy.request('POST', `${apiUrl}/transactions`, {
+    //     // 3. Créer la transaction
+    //     cy.request('POST', `${apiUrl}/transactions`, {
     //       type: 'payment',
     //       source: sender.id,
     //       senderId: sender.id,
     //       receiverId: receiver.id,
     //       amount: 2500,  // en centimes = 25.00$
-    //       description: 'Test API - Paiement automatisé',
+    //       description: 'Test API - Paiement',
     //       transactionType: 'payment',
+    //     }).then((response) => {
+    //       expect(response.status).to.eq(200)
+    //       expect(response.body.transaction).to.have.property('id')
+    //       expect(response.body.transaction.description).to.eq('Test API - Paiement')
+    //       cy.log('Transaction créée : ' + response.body.transaction.id)
     //     })
     //   })
-    //   .then((response) => {
-    //     expect(response.status).to.eq(200)
-    //     expect(response.body.transaction).to.have.property('id')
-    //     expect(response.body.transaction.description).to.eq('Test API - Paiement automatisé')
-    //     cy.log('Transaction créée : ' + response.body.transaction.id)
-    //   })
+    // })
   });
 
   // ──────────────────────────────────────────────

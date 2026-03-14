@@ -89,13 +89,16 @@ describe("Gestion des comptes bancaires", () => {
     // 1. Cliquer sur "Create"
     //    cy.getBySel('bankaccount-new').click()
     // 2. Cliquer sur le champ Bank Name puis le quitter sans rien taper
-    //    cy.getBySelLike('bankName-input').type('a').clear().blur()
+    //    ⚠️ Les champs ont le data-test sur le wrapper div, pas sur l'input.
+    //    Il faut utiliser .find('input') pour cibler le vrai input.
+    //    cy.getBySelLike('bankName-input').find('input').type('a').clear().blur()
     // 3. Vérifier le message d'erreur
     //    cy.get('#bankaccount-bankName-input-helper-text')
     //      .should('be.visible')
     // 4. Faire pareil pour Routing Number
-    //    cy.getBySelLike('routingNumber-input').type('1').clear().blur()
+    //    cy.getBySelLike('routingNumber-input').find('input').type('1').clear().blur()
     // 5. Faire pareil pour Account Number
+    //    cy.getBySelLike('accountNumber-input').find('input').type('1').clear().blur()
     // 6. Vérifier que le bouton Save est disabled
     //    cy.getBySel('bankaccount-submit').should('be.disabled')
   });

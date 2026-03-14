@@ -44,20 +44,23 @@ describe("Gestion des temps d'attente", () => {
   // ──────────────────────────────────────────────
   it("SC64 - devrait intercepter le chargement des transactions et vérifier la réponse", () => {
     // TODO :
-    // 1. Intercepter la requête GET vers /transactions
-    //    cy.intercept('GET', '/transactions*').as('getTransactions')
-    // 2. Se connecter (ce qui déclenche le chargement des transactions)
-    //    cy.login('Heath93', 's3cret')
-    // 3. Attendre que la requête soit terminée
-    //    cy.wait('@getTransactions')
-    // 4. Vérifier la réponse
+    // ⚠️ cy.intercept() doit être appelé AVANT que la requête ne parte.
+    // ⚠️ Utiliser le pattern '**/' devant l'URL pour matcher toute URL contenant ce chemin.
+    // ⚠️ La page d'accueil charge /transactions/public (pas /transactions)
+    //
+    // 1. Intercepter la requête GET vers /transactions/public
+    //    cy.intercept('GET', '**/transactions/public*').as('getTransactions')
+    // 2. Se connecter via l'UI (visite la page signin, tape les identifiants)
+    //    cy.visit('/signin')
+    //    cy.getBySel('signin-username').type('Heath93')
+    //    cy.getBySel('signin-password').type('s3cret')
+    //    cy.getBySel('signin-submit').click()
+    // 3. Attendre que la requête soit terminée et vérifier la réponse
     //    cy.wait('@getTransactions').then((interception) => {
-    //      // Vérifier le status code
     //      expect(interception.response.statusCode).to.eq(200)
-    //      // Loguer le nombre de transactions reçues
-    //      cy.log('Transactions reçues : ' + JSON.stringify(interception.response.body))
+    //      cy.log('Transactions reçues : ' + interception.response.body.results.length)
     //    })
-    // 5. Vérifier que la liste s'affiche après le chargement
+    // 4. Vérifier que la liste s'affiche après le chargement
     //    cy.getBySel('transaction-list').should('be.visible')
   });
 

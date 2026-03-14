@@ -58,14 +58,15 @@ describe("Notifications", () => {
   // ──────────────────────────────────────────────
   // SC60 — Cliquer sur une notification
   // ──────────────────────────────────────────────
-  it("SC60 - devrait naviguer vers la transaction en cliquant sur une notification", () => {
+  it("SC60 - devrait pouvoir cliquer sur une notification et voir son contenu", () => {
     // TODO :
     // 1. Aller sur les notifications
     //    cy.getBySel('sidenav-notifications').click()
     // 2. Cliquer sur la première notification
     //    cy.getBySelLike('notification-list-item').first().click()
-    // 3. Vérifier qu'on est redirigé vers le détail d'une transaction
-    //    cy.url().should('match', /\/transaction\//)
+    // 3. Vérifier que la notification contient du texte (description d'une action)
+    //    cy.getBySelLike('notification-list-item').first()
+    //      .should('contain', 'Heath93')
   });
 
   // ──────────────────────────────────────────────

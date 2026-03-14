@@ -59,10 +59,11 @@ describe("Créer un paiement", () => {
     // 1. Taper "Arvilla" dans le champ de recherche
     //    cy.get('[data-test="user-list-search-input"]').type('Arvilla')
     //    (ou cy.get('input[placeholder*="Search"]').type('Arvilla'))
-    // 2. Vérifier que la liste filtrée contient le bon contact
+    // 2. Vérifier que la liste filtrée contient moins de résultats qu'avant
     //    cy.getBySelLike('user-list-item')
-    //      .should('have.length', 1)
-    //      .and('contain', 'Arvilla')
+    //      .should('have.length.lessThan', 5)
+    //    cy.getBySelLike('user-list-item').first()
+    //      .should('contain', 'Arvilla')
   });
 
   // ──────────────────────────────────────────────
@@ -78,10 +79,8 @@ describe("Créer un paiement", () => {
     //    cy.get('#transaction-create-description-input').type('Remboursement restaurant')
     // 4. Cliquer sur le bouton "Pay"
     //    cy.getBySel('transaction-create-submit-payment').click()
-    // 5. Vérifier le message de succès avec des assertions MULTIPLES
-    //    cy.get('[data-test="alert-bar-success"]')
-    //      .should('be.visible')
-    //      .and('contain', 'Paid')
+    // 5. Vérifier que le message de confirmation contient "Paid"
+    //    cy.contains('Paid').should('be.visible')
   });
 
   // ──────────────────────────────────────────────

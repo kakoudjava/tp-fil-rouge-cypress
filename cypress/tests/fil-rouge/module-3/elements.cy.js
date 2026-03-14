@@ -53,23 +53,22 @@ describe("Éléments spécifiques de la page", () => {
   // ──────────────────────────────────────────────
   it("SC40 - devrait mettre en surbrillance le lien actif dans la sidebar", () => {
     // TODO :
-    // 1. Sur la page d'accueil, vérifier que le lien "Home" a une classe "active" ou "Mui-selected"
-    //    cy.getBySel('sidenav-home')
-    //      .invoke('attr', 'class')
-    //      .should('contain', 'Mui-selected')
-    //
-    // 2. Naviguer vers "My Account"
+    // 1. Naviguer vers "My Account"
     //    cy.getBySel('sidenav-user-settings').click()
     //
-    // 3. Vérifier que "My Account" a maintenant la classe active
+    // 2. Vérifier que "My Account" a un fond coloré (pas transparent)
+    //    .should('have.css', 'background-color') vérifie le style CSS d'un élément
     //    cy.getBySel('sidenav-user-settings')
-    //      .invoke('attr', 'class')
-    //      .should('contain', 'Mui-selected')
+    //      .should('have.css', 'background-color')
+    //      .and('not.eq', 'rgba(0, 0, 0, 0)')
     //
-    // 4. Vérifier que "Home" n'a PLUS la classe active
-    //    cy.getBySel('sidenav-home')
-    //      .invoke('attr', 'class')
-    //      .should('not.contain', 'Mui-selected')
+    // 3. Naviguer vers "Bank Accounts"
+    //    cy.getBySel('sidenav-bankaccounts').click()
+    //
+    // 4. Vérifier que "Bank Accounts" a maintenant le fond actif
+    //    cy.getBySel('sidenav-bankaccounts')
+    //      .should('have.css', 'background-color')
+    //      .and('not.eq', 'rgba(0, 0, 0, 0)')
   });
 
   // ──────────────────────────────────────────────
@@ -104,17 +103,13 @@ describe("Éléments spécifiques de la page", () => {
     // 1. Naviguer vers My Account
     //    cy.getBySel('sidenav-user-settings').click()
     // 2. Vérifier que le champ "First Name" est pré-rempli (pas vide)
-    //    cy.getBySelLike('firstName')
-    //      .find('input')
+    //    On utilise input[name='firstName'] pour cibler le champ par son attribut name
+    //    cy.get("input[name='firstName']")
     //      .invoke('val')
     //      .should('not.be.empty')
-    // 3. Vérifier que le champ "Last Name" est pré-rempli
-    //    cy.getBySelLike('lastName')
-    //      .find('input')
-    //      .invoke('val')
-    //      .should('not.be.empty')
-    // 4. Vérifier le champ "Email"
-    // 5. Vérifier le champ "Phone Number"
+    // 3. Vérifier le champ "Last Name"  → input[name='lastName']
+    // 4. Vérifier le champ "Email"      → input[name='email']
+    // 5. Vérifier le champ "Phone"      → input[name='phoneNumber']
   });
 
   // ──────────────────────────────────────────────

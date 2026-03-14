@@ -87,14 +87,14 @@ describe("Inscription d'un nouvel utilisateur", () => {
   // ──────────────────────────────────────────────
   // SC05 — Bouton désactivé si formulaire incomplet
   // ──────────────────────────────────────────────
-  it("SC05 - devrait désactiver le bouton Sign Up tant que le formulaire est incomplet", () => {
+  it("SC05 - devrait afficher des erreurs de validation quand les champs sont vides", () => {
     // TODO :
-    // 1. Sans rien remplir, vérifier que le bouton est disabled
-    //    cy.getBySel('signup-submit').should('be.disabled')
-    // 2. Remplir seulement "First Name"
-    // 3. Vérifier que le bouton est toujours disabled
-    // 4. Remplir TOUS les champs correctement
-    // 5. Vérifier que le bouton n'est plus disabled
+    // 1. Cliquer dans le champ "First Name" puis le quitter sans rien taper
+    //    cy.getBySel('signup-first-name').find('input').click().blur()
+    // 2. Vérifier que le message d'erreur "First Name is required" apparaît
+    //    cy.get('#firstName-helper-text').should('be.visible').and('contain', 'First Name is required')
+    // 3. Remplir TOUS les champs correctement
+    // 4. Vérifier que le bouton n'est plus disabled
     //    cy.getBySel('signup-submit').should('not.be.disabled')
   });
 

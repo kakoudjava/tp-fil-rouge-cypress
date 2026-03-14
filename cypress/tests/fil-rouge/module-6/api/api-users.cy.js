@@ -67,20 +67,20 @@ describe("API — Utilisateurs", () => {
   // ──────────────────────────────────────────────
   it("SC95 - PATCH /users/:id - devrait modifier les infos de l'utilisateur", () => {
     // TODO :
-    // 1. D'abord, récupérer l'ID de l'utilisateur
-    // cy.request('GET', `${apiUrl}/users`)
-    //   .then((response) => {
-    //     const user = response.body.results.find(u => u.username === 'Heath93')
+    // ⚠️ ATTENTION : GET /users retourne tous les utilisateurs SAUF l'utilisateur connecté !
+    // Pour récupérer notre propre ID, on utilise cy.database()
     //
-    //     // 2. Modifier le prénom
-    //     return cy.request('PATCH', `${apiUrl}/users/${user.id}`, {
-    //       firstName: 'Modifié',
-    //       lastName: 'ViaAPI',
-    //     })
-    //   })
-    //   .then((response) => {
+    // 1. Récupérer l'ID de l'utilisateur via la base de données
+    // cy.database('find', 'users', { username: 'Heath93' }).then((user) => {
+    //
+    //   // 2. Modifier le prénom
+    //   cy.request('PATCH', `${apiUrl}/users/${user.id}`, {
+    //     firstName: 'Modifié',
+    //     lastName: 'ViaAPI',
+    //   }).then((response) => {
     //     expect(response.status).to.eq(204)
     //   })
+    // })
     //
     // 3. Vérifier que la modification est persistée
     // cy.request('GET', `${apiUrl}/users/profile/Heath93`)
