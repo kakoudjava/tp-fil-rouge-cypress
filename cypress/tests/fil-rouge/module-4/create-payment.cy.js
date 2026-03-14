@@ -26,6 +26,9 @@
 
 describe("Créer un paiement", () => {
   beforeEach(() => {
+    // Réinitialise la base de données avant chaque test
+    // → Remet les données par défaut (utilisateurs, transactions, etc.)
+    // ⚠️ Cette ligne est déjà fournie — ne pas la modifier
     cy.task("db:seed");
     cy.login("Heath93", "s3cret");
     // Naviguer vers la page de nouvelle transaction
