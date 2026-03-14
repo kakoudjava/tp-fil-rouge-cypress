@@ -27,12 +27,57 @@ La configuration Cypress est déjà faite :
 
 ---
 
-## Étape 1 — Cloner le projet
+## Étape 1 — Récupérer le projet sur ton ordinateur
+
+### C'est quoi Git et GitHub ?
+
+- **Git** = un outil qui permet de sauvegarder et suivre les modifications de ton code (comme un historique)
+- **GitHub** = un site web qui héberge du code. C'est là que se trouve le projet de ce TP
+- **Cloner** = télécharger une copie du projet depuis GitHub vers ton ordinateur
+
+> 💡 Tu n'as pas besoin de maîtriser Git pour ce TP. On te demande juste d'exécuter **2 commandes** pour récupérer le projet. C'est tout !
+
+### Pré-requis
+
+Avant de commencer, vérifie que tu as :
+
+1. **Node.js** installé → Vérifie en tapant dans ton terminal :
+   ```bash
+   node --version
+   ```
+   Tu dois voir un numéro de version (ex: `v18.17.0`). Si ce n'est pas le cas, télécharge Node.js sur [nodejs.org](https://nodejs.org) (version LTS recommandée).
+
+2. **Git** installé → Vérifie en tapant :
+   ```bash
+   git --version
+   ```
+   Tu dois voir un numéro de version (ex: `git version 2.39.0`). Si ce n'est pas le cas :
+   - **Mac** : tape `xcode-select --install` dans le terminal
+   - **Windows** : télécharge Git sur [git-scm.com](https://git-scm.com)
+   - **Linux** : `sudo apt install git`
+
+### Récupérer le projet
+
+Ouvre ton **terminal** (ou "invite de commandes" sur Windows) et tape ces 2 commandes :
 
 ```bash
-git clone https://github.com/zotomatise/tp-fil-rouge-cypress.git
+git clone https://github.com/Zotomatise/tp-fil-rouge-cypress.git
+```
+
+> ⬆️ Cette commande télécharge le projet dans un dossier `tp-fil-rouge-cypress` sur ton ordinateur.
+
+```bash
 cd tp-fil-rouge-cypress
 ```
+
+> ⬆️ Cette commande te place à l'intérieur du dossier du projet.
+
+**Tu es maintenant dans le projet.** Toutes les commandes suivantes doivent être exécutées depuis ce dossier.
+
+> ⚠️ **Où exécuter ces commandes ?**
+> - **Mac** : ouvre l'app "Terminal" (cherche "Terminal" dans Spotlight)
+> - **Windows** : ouvre "Git Bash" (installé avec Git) ou "PowerShell"
+> - **VS Code** : utilise le terminal intégré (menu `Terminal > Nouveau terminal` ou raccourci `` Ctrl+` ``)
 
 ---
 
@@ -57,20 +102,30 @@ C'est pour ça qu'il faut l'installer.
 
 ### Installation
 
+Tape ces commandes **une par une** dans ton terminal :
+
 ```bash
 # 1. Installer yarn (à faire une seule fois)
 npm install -g yarn
+```
 
+> ⬆️ Installe yarn sur ton ordinateur. Tu ne le feras qu'une seule fois.
+
+```bash
 # 2. Installer les dépendances du projet
 yarn install
 ```
 
-**En cas d'erreur "ERESOLVE" :**
-Si `yarn install` échoue, utilise cette commande à la place :
+> ⬆️ Télécharge toutes les librairies dont le projet a besoin (Cypress, React, etc.). Ça peut prendre 2-3 minutes.
+
+**⚠️ En cas d'erreur "ERESOLVE" :**
+Si `yarn install` affiche une erreur, pas de panique ! Tape cette commande à la place :
 ```bash
 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install --legacy-peer-deps
 ```
 Le flag `--legacy-peer-deps` ignore les conflits de versions entre certaines dépendances. C'est sans risque pour notre usage.
+
+> 💡 **Comment savoir si l'installation a réussi ?** Tu ne dois pas voir de message "ERROR" en rouge. Des "warnings" en jaune, c'est normal, on les ignore.
 
 ---
 
@@ -87,6 +142,8 @@ Cette commande lance :
 - La **base de données SQLite** (fichier local)
 
 Ouvre `http://localhost:3000` dans ton navigateur pour vérifier que l'app tourne.
+
+> ⚠️ **Le terminal reste "bloqué" après `npm run dev` : c'est normal !** L'app tourne en arrière-plan. Ne ferme pas ce terminal. Pour taper d'autres commandes, **ouvre un 2ème terminal** (ou un 2ème onglet dans VS Code).
 
 ---
 
@@ -108,17 +165,33 @@ Le mot de passe est **`s3cret`** pour tous les comptes.
 
 ## Étape 5 — Lancer Cypress et les tests
 
-```bash
-# Mode interactif (avec le navigateur) — RECOMMANDÉ pour développer
-npx cypress open
-# → Sélectionner "E2E Testing" > "Chrome" > choisir un fichier dans tests/fil-rouge/
+> ⚠️ **Avant de lancer Cypress**, assure-toi que l'application tourne déjà (étape 3) dans un autre terminal.
 
-# Mode headless (en ligne de commande) — pour vérifier que tout passe
+### Mode interactif (RECOMMANDÉ pour travailler)
+
+Ouvre un **2ème terminal** (l'app tourne déjà dans le 1er) et tape :
+
+```bash
+npx cypress open
+```
+
+Ensuite dans la fenêtre Cypress :
+1. Clique sur **"E2E Testing"**
+2. Choisis **"Chrome"** (ou un autre navigateur)
+3. Clique sur **"Start E2E Testing in Chrome"**
+4. Tu verras la liste des fichiers de test → navigue dans `tests/fil-rouge/` et clique sur le fichier du module en cours
+
+### Mode headless (pour vérifier que tout passe)
+
+```bash
+# Lancer TOUS les tests du fil rouge
 npx cypress run --spec "cypress/tests/fil-rouge/**/*.cy.js"
 
 # Lancer un seul module (exemple : module 2)
 npx cypress run --spec "cypress/tests/fil-rouge/module-2/**/*.cy.js"
 ```
+
+> 💡 Le mode headless lance les tests sans ouvrir de navigateur visible. C'est plus rapide mais moins pratique pour débuguer.
 
 ---
 
