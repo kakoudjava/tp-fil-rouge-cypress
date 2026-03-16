@@ -328,7 +328,13 @@ cypress/tests/fil-rouge/
   │   ├── transaction-list.cy.js    (7 scénarios)
   │   └── elements.cy.js            (6 scénarios)
   │
-  ├── module-4/                     Assertions, waits, CRUD
+  ├── module-4/                     Debug, POM, fixtures, commandes custom
+  │   ├── debug.cy.js               (5 scénarios)
+  │   ├── fixtures/                 Données de test externalisées
+  │   ├── pages/                    Page Objects à compléter
+  │   └── commands/                 Commandes personnalisées
+  │
+  ├── module-5/                     Assertions avancées, waits, CRUD
   │   ├── create-payment.cy.js      (8 scénarios)
   │   ├── create-request.cy.js      (5 scénarios)
   │   ├── notifications.cy.js       (5 scénarios)
@@ -336,12 +342,6 @@ cypress/tests/fil-rouge/
   │   ├── account-settings.cy.js    (5 scénarios)
   │   ├── bank-accounts.cy.js       (4 scénarios)
   │   └── likes-comments.cy.js      (3 scénarios)
-  │
-  ├── module-5/                     Refacto, POM, fixtures, debug
-  │   ├── fixtures/                 Données de test externalisées
-  │   ├── pages/                    Page Objects à compléter
-  │   ├── commands/                 Commandes personnalisées
-  │   └── debug.cy.js               (5 scénarios)
   │
   └── module-6/                     API, Mock, BDD, CI
       ├── api/                      Tests API REST (14 scénarios)
@@ -368,7 +368,7 @@ cypress/tests/fil-rouge/
 |--------|----------|-------------|
 | 2 | Structurer des tests avec Mocha (describe, it, hooks) | 17 |
 | 3 | Interagir avec le DOM (sélecteurs, find, parent, invoke) | 27 |
-| 4 | Assertions avancées, timeouts, waits, CRUD | 36 |
-| 5 | Refactoriser avec POM, fixtures, commandes custom, debug | 5 + refacto |
+| 4 | Debug, POM, fixtures, commandes custom | 5 + refacto |
+| 5 | Assertions avancées, timeouts, waits, CRUD | 36 |
 | 6 | Tester les API, mocker, BDD Cucumber, CI Jenkins | 20 |
 | **Total** | | **105+ scénarios** |

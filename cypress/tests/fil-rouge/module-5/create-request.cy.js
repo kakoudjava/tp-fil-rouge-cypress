@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Demander un paiement (Request)
+ * TP FIL ROUGE — MODULE 5 : Demander un paiement (Request)
  * ============================================================
  *
  * OBJECTIF :
@@ -24,9 +24,9 @@ describe("Demander un paiement (Request)", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC53 — Envoyer une demande de paiement
+  // SC58 — Envoyer une demande de paiement
   // ──────────────────────────────────────────────
-  it("SC53 - devrait envoyer une demande de paiement (Request)", () => {
+  it("SC58 - devrait envoyer une demande de paiement (Request)", () => {
     // TODO :
     // 1. Se connecter avec Heath93
     cy.login("Heath93", "s3cret");
@@ -42,9 +42,9 @@ describe("Demander un paiement (Request)", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC54 — Voir la demande dans l'onglet "Mine"
+  // SC59 — Voir la demande dans l'onglet "Mine"
   // ──────────────────────────────────────────────
-  it("SC54 - devrait voir la demande dans l'onglet 'Mine' de l'émetteur", () => {
+  it("SC59 - devrait voir la demande dans l'onglet 'Mine' de l'émetteur", () => {
     // TODO :
     // 1. Se connecter avec Heath93
     // 2. Créer une Request vers Arvilla pour 30$
@@ -58,15 +58,15 @@ describe("Demander un paiement (Request)", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC55 — Accepter une demande de paiement
+  // SC60 — Accepter une demande de paiement
   // ──────────────────────────────────────────────
-  it("SC55 - devrait accepter une demande de paiement reçue (scénario multi-utilisateur)", () => {
+  it("SC60 - devrait accepter une demande de paiement reçue (scénario multi-utilisateur)", () => {
     // TODO :
     // ÉTAPE 1 : Heath93 envoie une Request à Arvilla
     // 1. Se connecter avec Heath93
     cy.login("Heath93", "s3cret");
     // 2. Créer une Request de 25$ vers Arvilla
-    //    (même étapes que SC53)
+    //    (même étapes que SC58)
     // 3. Se déconnecter
     //    cy.getBySel('sidenav-signout').click()
     //
@@ -83,20 +83,20 @@ describe("Demander un paiement (Request)", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC56 — Rejeter une demande de paiement
+  // SC61 — Rejeter une demande de paiement
   // ──────────────────────────────────────────────
-  it("SC56 - devrait rejeter une demande de paiement reçue", () => {
+  it("SC61 - devrait rejeter une demande de paiement reçue", () => {
     // TODO :
-    // Même logique que SC55, mais à l'étape 7 :
+    // Même logique que SC60, mais à l'étape 7 :
     // - Cliquer sur "Reject" au lieu de "Accept"
     //   cy.getBySelLike('transaction-reject-request').click()
     // - Vérifier que le statut change en "rejected"
   });
 
   // ──────────────────────────────────────────────
-  // SC57 — Vérifier les détails d'une Request dans le détail
+  // SC62 — Vérifier les détails d'une Request dans le détail
   // ──────────────────────────────────────────────
-  it("SC57 - devrait afficher les détails corrects d'une Request", () => {
+  it("SC62 - devrait afficher les détails corrects d'une Request", () => {
     // TODO :
     // 1. Se connecter et créer une Request de 75$ avec description "Loyer"
     // 2. Retourner aux transactions > onglet "Mine"

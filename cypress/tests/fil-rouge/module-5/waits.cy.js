@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Timeouts et Temps d'attente
+ * TP FIL ROUGE — MODULE 5 : Timeouts et Temps d'attente
  * ============================================================
  *
  * OBJECTIF :
@@ -25,9 +25,9 @@ describe("Gestion des temps d'attente", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC63 — Timeout personnalisé sur un élément
+  // SC68 — Timeout personnalisé sur un élément
   // ──────────────────────────────────────────────
-  it("SC63 - devrait attendre le chargement de la liste avec un timeout personnalisé", () => {
+  it("SC68 - devrait attendre le chargement de la liste avec un timeout personnalisé", () => {
     // TODO :
     // 1. Se connecter
     cy.login("Heath93", "s3cret");
@@ -40,9 +40,9 @@ describe("Gestion des temps d'attente", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC64 — Intercepter une requête GET et attendre sa réponse
+  // SC69 — Intercepter une requête GET et attendre sa réponse
   // ──────────────────────────────────────────────
-  it("SC64 - devrait intercepter le chargement des transactions et vérifier la réponse", () => {
+  it("SC69 - devrait intercepter le chargement des transactions et vérifier la réponse", () => {
     // TODO :
     // ⚠️ cy.intercept() doit être appelé AVANT que la requête ne parte.
     // ⚠️ Utiliser le pattern '**/' devant l'URL pour matcher toute URL contenant ce chemin.
@@ -65,9 +65,9 @@ describe("Gestion des temps d'attente", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC65 — Intercepter une requête POST (création de transaction)
+  // SC70 — Intercepter une requête POST (création de transaction)
   // ──────────────────────────────────────────────
-  it("SC65 - devrait intercepter la création d'une transaction et vérifier le body envoyé", () => {
+  it("SC70 - devrait intercepter la création d'une transaction et vérifier le body envoyé", () => {
     // TODO :
     // 1. Intercepter la requête POST vers /transactions
     //    cy.intercept('POST', '/transactions').as('createTransaction')
@@ -90,9 +90,9 @@ describe("Gestion des temps d'attente", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC66 — Intercepter la requête de login
+  // SC71 — Intercepter la requête de login
   // ──────────────────────────────────────────────
-  it("SC66 - devrait intercepter le login et vérifier la réponse avec le user ID", () => {
+  it("SC71 - devrait intercepter le login et vérifier la réponse avec le user ID", () => {
     // TODO :
     // 1. Intercepter la requête POST /login
     //    cy.intercept('POST', '/login').as('loginRequest')
@@ -112,9 +112,9 @@ describe("Gestion des temps d'attente", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC67 — Intercepter les notifications
+  // SC72 — Intercepter les notifications
   // ──────────────────────────────────────────────
-  it("SC67 - devrait intercepter le chargement des notifications", () => {
+  it("SC72 - devrait intercepter le chargement des notifications", () => {
     // TODO :
     // 1. Intercepter GET /notifications
     //    cy.intercept('GET', '/notifications*').as('getNotifications')
@@ -129,9 +129,9 @@ describe("Gestion des temps d'attente", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC68 — Attendre le skeleton loader
+  // SC73 — Attendre le skeleton loader
   // ──────────────────────────────────────────────
-  it("SC68 - devrait vérifier que le skeleton loader disparaît après chargement", () => {
+  it("SC73 - devrait vérifier que le skeleton loader disparaît après chargement", () => {
     // TODO :
     // 1. Se connecter
     cy.login("Heath93", "s3cret");

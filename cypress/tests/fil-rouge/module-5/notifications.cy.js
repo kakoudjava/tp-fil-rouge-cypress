@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Notifications
+ * TP FIL ROUGE — MODULE 5 : Notifications
  * ============================================================
  *
  * OBJECTIF :
@@ -25,9 +25,9 @@ describe("Notifications", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC58 — Affichage du badge de notifications
+  // SC63 — Affichage du badge de notifications
   // ──────────────────────────────────────────────
-  it("SC58 - devrait afficher le compteur de notifications dans la top bar", () => {
+  it("SC63 - devrait afficher le compteur de notifications dans la top bar", () => {
     // TODO :
     // 1. Vérifier que le badge de notifications est visible
     //    cy.getBySel('nav-top-notifications-count').should('be.visible')
@@ -42,9 +42,9 @@ describe("Notifications", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC59 — Affichage de la liste des notifications
+  // SC64 — Affichage de la liste des notifications
   // ──────────────────────────────────────────────
-  it("SC59 - devrait afficher la liste des notifications", () => {
+  it("SC64 - devrait afficher la liste des notifications", () => {
     // TODO :
     // 1. Naviguer vers les notifications via la sidebar
     //    cy.getBySel('sidenav-notifications').click()
@@ -56,9 +56,9 @@ describe("Notifications", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC60 — Cliquer sur une notification
+  // SC65 — Cliquer sur une notification
   // ──────────────────────────────────────────────
-  it("SC60 - devrait pouvoir cliquer sur une notification et voir son contenu", () => {
+  it("SC65 - devrait pouvoir cliquer sur une notification et voir son contenu", () => {
     // TODO :
     // 1. Aller sur les notifications
     //    cy.getBySel('sidenav-notifications').click()
@@ -70,9 +70,9 @@ describe("Notifications", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC61 — Marquer une notification comme lue
+  // SC66 — Marquer une notification comme lue
   // ──────────────────────────────────────────────
-  it("SC61 - devrait pouvoir marquer une notification comme lue", () => {
+  it("SC66 - devrait pouvoir marquer une notification comme lue", () => {
     // TODO :
     // 1. Aller sur les notifications
     //    cy.getBySel('sidenav-notifications').click()
@@ -87,9 +87,9 @@ describe("Notifications", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC62 — Notification générée après un paiement
+  // SC67 — Notification générée après un paiement
   // ──────────────────────────────────────────────
-  it("SC62 - devrait générer une notification quand un autre utilisateur nous paie", () => {
+  it("SC67 - devrait générer une notification quand un autre utilisateur nous paie", () => {
     // TODO :
     // ÉTAPE 1 : Arvilla paie Heath93
     // 1. Se déconnecter

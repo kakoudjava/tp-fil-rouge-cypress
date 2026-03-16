@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 5 : Debug avec Cypress
+ * TP FIL ROUGE — MODULE 4 : Debug avec Cypress
  * ============================================================
  *
  * OBJECTIF :
@@ -26,9 +26,9 @@ describe("Debug avec Cypress", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC81 — Utiliser cy.log() pour tracer un parcours
+  // SC45 — Utiliser cy.log() pour tracer un parcours
   // ──────────────────────────────────────────────
-  it("SC81 - devrait tracer chaque étape d'un paiement avec cy.log()", () => {
+  it("SC45 - devrait tracer chaque étape d'un paiement avec cy.log()", () => {
     // TODO :
     // 1. Loguer l'étape 1
     //    cy.log('📍 ÉTAPE 1 : Navigation vers New Transaction')
@@ -52,9 +52,9 @@ describe("Debug avec Cypress", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC82 — Utiliser cy.screenshot() pour capturer des preuves
+  // SC46 — Utiliser cy.screenshot() pour capturer des preuves
   // ──────────────────────────────────────────────
-  it("SC82 - devrait prendre des screenshots à chaque étape", () => {
+  it("SC46 - devrait prendre des screenshots à chaque étape", () => {
     // TODO :
     // 1. Screenshot du dashboard après login
     //    cy.screenshot('debug/01-dashboard-apres-login')
@@ -81,9 +81,9 @@ describe("Debug avec Cypress", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC83 — Utiliser cy.pause() pour explorer manuellement
+  // SC47 — Utiliser cy.pause() pour explorer manuellement
   // ──────────────────────────────────────────────
-  it("SC83 - devrait mettre en pause pour explorer le DOM manuellement", () => {
+  it("SC47 - devrait mettre en pause pour explorer le DOM manuellement", () => {
     // TODO :
     // 1. Naviguer vers la page de création de transaction
     //    cy.getBySel('nav-top-new-transaction').click()
@@ -105,9 +105,9 @@ describe("Debug avec Cypress", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC84 — Utiliser .debug() sur un élément
+  // SC48 — Utiliser .debug() sur un élément
   // ──────────────────────────────────────────────
-  it("SC84 - devrait utiliser .debug() pour inspecter un élément dans la console", () => {
+  it("SC48 - devrait utiliser .debug() pour inspecter un élément dans la console", () => {
     // TODO :
     // 1. Ouvrir les DevTools (F12) avant de lancer ce test
     // 2. Utiliser .debug() sur le solde pour l'inspecter dans la console
@@ -127,12 +127,12 @@ describe("Debug avec Cypress", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC85 — Mode d'exécution headless
+  // SC49 — Mode d'exécution headless
   // ──────────────────────────────────────────────
-  it("SC85 - ce test est conçu pour le mode headless (cypress run)", () => {
+  it("SC49 - ce test est conçu pour le mode headless (cypress run)", () => {
     // TODO :
     // Ce test utilise uniquement des assertions (pas de pause/debug)
-    // Lance-le avec : npx cypress run --spec "cypress/tests/fil-rouge/module-5/debug.cy.js"
+    // Lance-le avec : npx cypress run --spec "cypress/tests/fil-rouge/module-4/debug.cy.js"
     //
     // 1. Vérifier la connexion
     //    cy.getBySel('sidenav-user-full-name').should('be.visible')

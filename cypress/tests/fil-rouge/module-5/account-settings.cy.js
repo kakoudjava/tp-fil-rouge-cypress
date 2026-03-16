@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Paramètres du compte (My Account)
+ * TP FIL ROUGE — MODULE 5 : Paramètres du compte (My Account)
  * ============================================================
  *
  * OBJECTIF :
@@ -33,9 +33,9 @@ describe("Paramètres du compte utilisateur", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC69 — Affichage du formulaire
+  // SC74 — Affichage du formulaire
   // ──────────────────────────────────────────────
-  it("SC69 - devrait afficher le formulaire avec les champs pré-remplis", () => {
+  it("SC74 - devrait afficher le formulaire avec les champs pré-remplis", () => {
     // TODO :
     // 1. Vérifier que le formulaire est visible
     //    cy.getBySel('user-settings-form').should('be.visible')
@@ -49,9 +49,9 @@ describe("Paramètres du compte utilisateur", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC70 — Modifier le prénom
+  // SC75 — Modifier le prénom
   // ──────────────────────────────────────────────
-  it("SC70 - devrait modifier le prénom et sauvegarder", () => {
+  it("SC75 - devrait modifier le prénom et sauvegarder", () => {
     // TODO :
     // 1. Effacer le champ "First Name" et taper un nouveau prénom
     //    cy.get("input[name='firstName']").clear().type('TestPrenom')
@@ -62,9 +62,9 @@ describe("Paramètres du compte utilisateur", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC71 — Modifier l'email
+  // SC76 — Modifier l'email
   // ──────────────────────────────────────────────
-  it("SC71 - devrait modifier l'email et sauvegarder", () => {
+  it("SC76 - devrait modifier l'email et sauvegarder", () => {
     // TODO :
     // 1. Effacer le champ email et taper un nouveau
     //    cy.get("input[name='email']").clear().type('nouveau@test.com')
@@ -78,9 +78,9 @@ describe("Paramètres du compte utilisateur", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC72 — Validation : email invalide
+  // SC77 — Validation : email invalide
   // ──────────────────────────────────────────────
-  it("SC72 - devrait afficher une erreur si l'email est invalide", () => {
+  it("SC77 - devrait afficher une erreur si l'email est invalide", () => {
     // TODO :
     // 1. Effacer l'email et taper "pas-un-email"
     //    cy.get("input[name='email']").clear().type('pas-un-email')
@@ -95,9 +95,9 @@ describe("Paramètres du compte utilisateur", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC73 — Validation : numéro de téléphone invalide
+  // SC78 — Validation : numéro de téléphone invalide
   // ──────────────────────────────────────────────
-  it("SC73 - devrait afficher une erreur si le numéro de téléphone est invalide", () => {
+  it("SC78 - devrait afficher une erreur si le numéro de téléphone est invalide", () => {
     // TODO :
     // 1. Effacer le téléphone et taper "abc"
     //    cy.get("input[name='phoneNumber']").clear().type('abc')

@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Likes et Commentaires
+ * TP FIL ROUGE — MODULE 5 : Likes et Commentaires
  * ============================================================
  *
  * OBJECTIF :
@@ -25,9 +25,9 @@ describe("Likes et Commentaires sur les transactions", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC78 — Liker une transaction
+  // SC83 — Liker une transaction
   // ──────────────────────────────────────────────
-  it("SC78 - devrait liker une transaction et incrémenter le compteur", () => {
+  it("SC83 - devrait liker une transaction et incrémenter le compteur", () => {
     // TODO :
     // 1. Cliquer sur la première transaction de la liste
     //    cy.getBySelLike('transaction-item').first().click()
@@ -46,9 +46,9 @@ describe("Likes et Commentaires sur les transactions", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC79 — Ajouter un commentaire
+  // SC84 — Ajouter un commentaire
   // ──────────────────────────────────────────────
-  it("SC79 - devrait ajouter un commentaire sur une transaction", () => {
+  it("SC84 - devrait ajouter un commentaire sur une transaction", () => {
     // TODO :
     // 1. Cliquer sur la première transaction
     //    cy.getBySelLike('transaction-item').first().click()
@@ -60,9 +60,9 @@ describe("Likes et Commentaires sur les transactions", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC80 — Ajouter plusieurs commentaires
+  // SC85 — Ajouter plusieurs commentaires
   // ──────────────────────────────────────────────
-  it("SC80 - devrait ajouter plusieurs commentaires et les voir tous", () => {
+  it("SC85 - devrait ajouter plusieurs commentaires et les voir tous", () => {
     // TODO :
     // 1. Cliquer sur la première transaction
     //    cy.getBySelLike('transaction-item').first().click()

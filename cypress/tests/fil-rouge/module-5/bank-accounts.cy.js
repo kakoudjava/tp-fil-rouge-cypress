@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Comptes bancaires (Bank Accounts)
+ * TP FIL ROUGE — MODULE 5 : Comptes bancaires (Bank Accounts)
  * ============================================================
  *
  * OBJECTIF :
@@ -29,9 +29,9 @@ describe("Gestion des comptes bancaires", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC74 — Affichage de la liste des comptes
+  // SC79 — Affichage de la liste des comptes
   // ──────────────────────────────────────────────
-  it("SC74 - devrait afficher la liste des comptes bancaires", () => {
+  it("SC79 - devrait afficher la liste des comptes bancaires", () => {
     // TODO :
     // 1. Vérifier que la liste est visible
     //    cy.getBySel('bankaccount-list').should('be.visible')
@@ -41,9 +41,9 @@ describe("Gestion des comptes bancaires", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC75 — Créer un nouveau compte bancaire
+  // SC80 — Créer un nouveau compte bancaire
   // ──────────────────────────────────────────────
-  it("SC75 - devrait créer un nouveau compte bancaire", () => {
+  it("SC80 - devrait créer un nouveau compte bancaire", () => {
     // TODO :
     // 1. Cliquer sur "Create"
     //    cy.getBySel('bankaccount-new').click()
@@ -65,9 +65,9 @@ describe("Gestion des comptes bancaires", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC76 — Supprimer un compte bancaire
+  // SC81 — Supprimer un compte bancaire
   // ──────────────────────────────────────────────
-  it("SC76 - devrait supprimer un compte bancaire", () => {
+  it("SC81 - devrait supprimer un compte bancaire", () => {
     // TODO :
     // 1. Compter les comptes bancaires actuels
     //    let countBefore
@@ -82,9 +82,9 @@ describe("Gestion des comptes bancaires", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC77 — Validation du formulaire de création
+  // SC82 — Validation du formulaire de création
   // ──────────────────────────────────────────────
-  it("SC77 - devrait afficher des erreurs de validation sur le formulaire bancaire", () => {
+  it("SC82 - devrait afficher des erreurs de validation sur le formulaire bancaire", () => {
     // TODO :
     // 1. Cliquer sur "Create"
     //    cy.getBySel('bankaccount-new').click()

@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * TP FIL ROUGE — MODULE 4 : Créer un paiement (Payment)
+ * TP FIL ROUGE — MODULE 5 : Créer un paiement (Payment)
  * ============================================================
  *
  * OBJECTIF :
@@ -36,9 +36,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC45 — Affichage de la liste des contacts
+  // SC50 — Affichage de la liste des contacts
   // ──────────────────────────────────────────────
-  it("SC45 - devrait afficher la liste des contacts disponibles", () => {
+  it("SC50 - devrait afficher la liste des contacts disponibles", () => {
     // TODO :
     // 1. Vérifier que la liste de contacts est visible
     //    cy.getBySel('users-list').should('be.visible')
@@ -52,9 +52,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC46 — Rechercher un contact
+  // SC51 — Rechercher un contact
   // ──────────────────────────────────────────────
-  it("SC46 - devrait filtrer les contacts en tapant dans le champ de recherche", () => {
+  it("SC51 - devrait filtrer les contacts en tapant dans le champ de recherche", () => {
     // TODO :
     // 1. Taper "Arvilla" dans le champ de recherche
     //    cy.get('[data-test="user-list-search-input"]').type('Arvilla')
@@ -67,9 +67,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC47 — Paiement valide complet
+  // SC52 — Paiement valide complet
   // ──────────────────────────────────────────────
-  it("SC47 - devrait effectuer un paiement de 50$ à Arvilla_Hegmann", () => {
+  it("SC52 - devrait effectuer un paiement de 50$ à Arvilla_Hegmann", () => {
     // TODO :
     // 1. Sélectionner le contact "Arvilla"
     //    cy.getBySelLike('user-list-item').contains('Arvilla').click()
@@ -84,9 +84,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC48 — Vérifier que le solde diminue après un paiement
+  // SC53 — Vérifier que le solde diminue après un paiement
   // ──────────────────────────────────────────────
-  it("SC48 - devrait diminuer le solde après un paiement", () => {
+  it("SC53 - devrait diminuer le solde après un paiement", () => {
     // TODO :
     // C'est un scénario AVANCÉ qui utilise .then() pour capturer des valeurs
     //
@@ -119,9 +119,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC49 — Erreur si montant est 0 ou vide
+  // SC54 — Erreur si montant est 0 ou vide
   // ──────────────────────────────────────────────
-  it("SC49 - devrait désactiver le bouton Pay si le montant est vide", () => {
+  it("SC54 - devrait désactiver le bouton Pay si le montant est vide", () => {
     // TODO :
     // 1. Sélectionner un contact
     //    cy.getBySelLike('user-list-item').first().click()
@@ -137,9 +137,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC50 — Erreur si description vide
+  // SC55 — Erreur si description vide
   // ──────────────────────────────────────────────
-  it("SC50 - devrait afficher une erreur si la description est vide", () => {
+  it("SC55 - devrait afficher une erreur si la description est vide", () => {
     // TODO :
     // 1. Sélectionner un contact
     // 2. Remplir le montant
@@ -153,9 +153,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC51 — Effectuer un autre paiement après le premier
+  // SC56 — Effectuer un autre paiement après le premier
   // ──────────────────────────────────────────────
-  it("SC51 - devrait pouvoir créer un autre paiement via le lien 'Create Another Transaction'", () => {
+  it("SC56 - devrait pouvoir créer un autre paiement via le lien 'Create Another Transaction'", () => {
     // TODO :
     // 1. Effectuer un premier paiement complet (contact + montant + description + Pay)
     // 2. Après le succès, cliquer sur "Create Another Transaction"
@@ -167,9 +167,9 @@ describe("Créer un paiement", () => {
   });
 
   // ──────────────────────────────────────────────
-  // SC52 — Retour aux transactions
+  // SC57 — Retour aux transactions
   // ──────────────────────────────────────────────
-  it("SC52 - devrait retourner à la liste des transactions après un paiement", () => {
+  it("SC57 - devrait retourner à la liste des transactions après un paiement", () => {
     // TODO :
     // 1. Effectuer un paiement
     // 2. Cliquer sur "Return To Transactions"
