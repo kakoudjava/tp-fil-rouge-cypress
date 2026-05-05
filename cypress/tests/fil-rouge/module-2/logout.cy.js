@@ -32,11 +32,11 @@ describe("Déconnexion", () => {
   it("SC15 - devrait se déconnecter via le bouton Logout dans la sidebar", () => {
     // TODO :
     // 1. Vérifier qu'on est bien connecté (le nom apparaît dans la sidebar)
-    //    cy.getBySel('sidenav-user-full-name').should('be.visible')
+        cy.getBySel('sidenav-user-full-name').should('be.visible')
     // 2. Cliquer sur le bouton "Logout" dans la sidebar
-    //    cy.getBySel('sidenav-signout').click()
+        cy.getBySel('sidenav-signout').click()
     // 3. Vérifier qu'on est redirigé vers /signin
-    //    cy.url().should('include', '/signin')
+        cy.url().should('include', '/signin')
   });
 
   // ──────────────────────────────────────────────
@@ -45,11 +45,11 @@ describe("Déconnexion", () => {
   it("SC16 - devrait ne plus accéder au dashboard après déconnexion", () => {
     // TODO :
     // 1. Se déconnecter
-    //    cy.getBySel('sidenav-signout').click()
+       cy.getBySel('sidenav-signout').click()
     // 2. Tenter de visiter la page d'accueil
-    //    cy.visit('/')
+       cy.visit('/')
     // 3. Vérifier qu'on est redirigé vers /signin (protection de la route)
-    //    cy.url().should('include', '/signin')
+       cy.url().should('include', '/signin')
   });
 
   // ──────────────────────────────────────────────
@@ -58,9 +58,12 @@ describe("Déconnexion", () => {
   it("SC17 - devrait pouvoir se reconnecter après une déconnexion", () => {
     // TODO :
     // 1. Se déconnecter
+        cy.getBySel('sidenav-signout').click()
     // 2. Vérifier qu'on est sur /signin
+        cy.url().should('include', '/signin')
     // 3. Se reconnecter avec "Arvilla_Hegmann" / "s3cret"
+        cy.login("Arvilla_Hegmann", "s3cret")
     // 4. Vérifier qu'on est bien connecté avec le bon utilisateur
-    //    cy.getBySel('sidenav-username').should('contain', 'Arvilla_Hegmann')
+        cy.getBySel('sidenav-username').should('contain', 'Arvilla_Hegmann')
   });
 });
