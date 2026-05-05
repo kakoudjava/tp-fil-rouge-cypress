@@ -35,11 +35,17 @@ describe("Inscription d'un nouvel utilisateur", () => {
   it("SC01 - devrait afficher le formulaire d'inscription avec tous les champs", () => {
     // TODO :
     // 1. Vérifier que le champ "First Name" est visible
+    cy.getBySel('signup-first-name').should('be.visible');
     // 2. Vérifier que le champ "Last Name" est visible
+    cy.getBySel('signup-last-name').should('be.visible');
     // 3. Vérifier que le champ "Username" est visible
+    cy.getBySel('signup-username').should('be.visible');
     // 4. Vérifier que le champ "Password" est visible
+    cy.getBySel('signup-password').should('be.visible');
     // 5. Vérifier que le champ "Confirm Password" est visible
+    cy.getBySel('signup-confirmPassword').should('be.visible');
     // 6. Vérifier que le bouton "Sign Up" est présent
+    cy.getBySel('signup-submit').should('be.visible');
   });
 
   // ──────────────────────────────────────────────
@@ -48,13 +54,21 @@ describe("Inscription d'un nouvel utilisateur", () => {
   it("SC02 - devrait inscrire un nouvel utilisateur avec des données valides", () => {
     // TODO :
     // 1. Remplir le champ "First Name" avec "Jean"
+    cy.getBySel('signup-first-name').type('Jean');
     // 2. Remplir le champ "Last Name" avec "Dupont"
+    cy.getBySel('signup-last-name').type('Dupont');
     // 3. Remplir le champ "Username" avec "JeanDupont" + un nombre aléatoire
     //    Astuce : const username = "JeanDupont" + Date.now()
+    const username = "JeanDupont" + Date.now();
+    cy.getBySel('signup-username').type(username);
     // 4. Remplir le champ "Password" avec "Test1234!"
+    cy.getBySel('signup-password').type('Test1234!');
     // 5. Remplir le champ "Confirm Password" avec "Test1234!"
+    cy.getBySel('signup-confirmPassword').type('Test1234!');
     // 6. Cliquer sur le bouton "Sign Up"
+    cy.getBySel('signup-submit').click();
     // 7. Vérifier qu'on est redirigé vers la page /signin
+    cy.url().should('include', '/signin');
     //    Utiliser : cy.url().should('include', '/signin')
   });
 
@@ -64,11 +78,18 @@ describe("Inscription d'un nouvel utilisateur", () => {
   it("SC03 - devrait afficher une erreur si le mot de passe est trop court", () => {
     // TODO :
     // 1. Remplir "First Name" et "Last Name"
+      cy.getBySel('signup-first-name').type('Alice');
+      cy.getBySel('signup-last-name').type('Smith');
     // 2. Remplir "Username"
+      const username = "AliceSmith" + Date.now();
+      cy.getBySel('signup-username').type(username);
     // 3. Remplir "Password" avec "abc" (moins de 4 caractères)
+      cy.getBySel('signup-password').type('abc');
     // 4. Cliquer ailleurs pour déclencher la validation (cy.getBySel('signup-confirmPassword').click())
+      cy.getBySel('signup-confirmPassword').click();
     // 5. Vérifier qu'un message d'erreur apparaît
     //    Utiliser : cy.get('#password-helper-text').should('be.visible').and('contain', 'least 4')
+      cy.get('#password-helper-text').should('be.visible').and('contain', 'least 4');
   });
 
   // ──────────────────────────────────────────────
@@ -77,11 +98,19 @@ describe("Inscription d'un nouvel utilisateur", () => {
   it("SC04 - devrait afficher une erreur si les mots de passe ne correspondent pas", () => {
     // TODO :
     // 1. Remplir tous les champs normalement
+    cy.getBySel('signup-first-name').type('Bob');
+    cy.getBySel('signup-last-name').type('Johnson');
+    const username = "BobJohnson" + Date.now();
+    cy.getBySel('signup-username').type(username); 
     // 2. Remplir "Password" avec "Test1234!"
+    cy.getBySel('signup-password').type('Test1234!');
     // 3. Remplir "Confirm Password" avec "Autre5678!"
+    cy.getBySel('signup-confirmPassword').type('Autre5678!');
     // 4. Cliquer ailleurs pour déclencher la validation
+    cy.getBySel('signup-first-name').click();
     // 5. Vérifier le message d'erreur "Password does not match"
     //    Utiliser : cy.get('#confirmPassword-helper-text').should('be.visible').and('contain', 'match')
+    cy.get('#confirmPassword-helper-text').should('be.visible').and('contain', 'match');
   });
 
   // ──────────────────────────────────────────────
@@ -90,12 +119,19 @@ describe("Inscription d'un nouvel utilisateur", () => {
   it("SC05 - devrait désactiver le bouton Sign Up tant que le formulaire est incomplet", () => {
     // TODO :
     // 1. Sans rien remplir, vérifier que le bouton est disabled
-    //    cy.getBySel('signup-submit').should('be.disabled')
+        cy.getBySel('signup-submit').should('not.be.disabled')
     // 2. Remplir seulement "First Name"
+        cy.getBySel('signup-first-name').type('Charlie');
     // 3. Vérifier que le bouton est toujours disabled
+        cy.getBySel('signup-submit').should('be.disabled')
     // 4. Remplir TOUS les champs correctement
+        cy.getBySel('signup-last-name').type('Brown');
+        const username = "CharlieBrown" + Date.now();
+        cy.getBySel('signup-username').type(username);
+        cy.getBySel('signup-password').type('Test1234!');
+        cy.getBySel('signup-confirmPassword').type('Test1234!');  
     // 5. Vérifier que le bouton n'est plus disabled
-    //    cy.getBySel('signup-submit').should('not.be.disabled')
+        cy.getBySel('signup-submit').should('not.be.disabled')
   });
 
   // ──────────────────────────────────────────────
@@ -105,7 +141,10 @@ describe("Inscription d'un nouvel utilisateur", () => {
     // TODO :
     // 1. Trouver le lien "Have an account? Sign In" sur la page
     //    Utiliser : cy.contains('Have an account? Sign In')
+    cy.contains('Have an account? Sign In').should('be.visible')
     // 2. Cliquer dessus
+    cy.contains('Have an account? Sign In').click();
     // 3. Vérifier que l'URL contient '/signin'
+    cy.url().should('include', '/signin');
   });
 });
