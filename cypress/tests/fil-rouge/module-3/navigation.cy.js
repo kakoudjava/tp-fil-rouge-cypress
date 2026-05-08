@@ -45,11 +45,11 @@ describe("Navigation principale", () => {
   it("SC22 - devrait afficher le nom complet de l'utilisateur dans la sidebar", () => {
     // TODO :
     // 1. Vérifier que le nom complet est visible
-    //    cy.getBySel('sidenav-user-full-name').should('be.visible')
+        cy.getBySel('sidenav-user-full-name').should('be.visible')
     // 2. Extraire le texte et vérifier qu'il n'est pas vide
-    //    cy.getBySel('sidenav-user-full-name')
-    //      .invoke('text')
-    //      .should('not.be.empty')
+        cy.getBySel('sidenav-user-full-name')
+          .invoke('text')
+          .should('not.be.empty')
   });
 
   // ──────────────────────────────────────────────
@@ -58,7 +58,7 @@ describe("Navigation principale", () => {
   it("SC23 - devrait afficher le username '@Heath93' dans la sidebar", () => {
     // TODO :
     // 1. Vérifier que le username contient "Heath93"
-    //    cy.getBySel('sidenav-username').should('contain', 'Heath93')
+        cy.getBySel('sidenav-username').should('contain', 'Heath93')
   });
 
   // ──────────────────────────────────────────────
@@ -67,10 +67,12 @@ describe("Navigation principale", () => {
   it("SC24 - devrait afficher le solde de l'utilisateur avec le signe $", () => {
     // TODO :
     // 1. Vérifier que le solde est visible
-    //    cy.getBySel('sidenav-user-balance').should('be.visible')
+        cy.getBySel('sidenav-user-balance').should('be.visible')
     // 2. Extraire le texte du solde
+        cy.getBySel('sidenav-user-balance')
+          .invoke('text')
     // 3. Vérifier qu'il contient le signe "$"
-    //    .invoke('text').should('contain', '$')
+        .should('contain', '$')
   });
 
   // ──────────────────────────────────────────────
@@ -79,11 +81,13 @@ describe("Navigation principale", () => {
   it("SC25 - devrait naviguer vers la page Home via la sidebar", () => {
     // TODO :
     // 1. D'abord, naviguer vers une autre page (ex: My Account)
-    //    cy.getBySel('sidenav-user-settings').click()
+        cy.getBySel('sidenav-user-settings').click()
     // 2. Vérifier qu'on est sur /user/settings
+        cy.url().should('contain', '/user/settings')
     // 3. Cliquer sur "Home" dans la sidebar
-    //    cy.getBySel('sidenav-home').click()
+        cy.getBySel('sidenav-home').click()
     // 4. Vérifier que l'URL est "/" ou ne contient pas "/user"
+        cy.url().should('eq', Cypress.config().baseUrl + '/')
   });
 
   // ──────────────────────────────────────────────
@@ -92,10 +96,11 @@ describe("Navigation principale", () => {
   it("SC26 - devrait naviguer vers My Account et afficher le formulaire", () => {
     // TODO :
     // 1. Cliquer sur "My Account" dans la sidebar
-    //    cy.getBySel('sidenav-user-settings').click()
+        cy.getBySel('sidenav-user-settings').click()
     // 2. Vérifier que l'URL contient '/user/settings'
+        cy.url().should('contain', '/user/settings')
     // 3. Vérifier que le formulaire de paramètres est visible
-    //    cy.getBySel('user-settings-form').should('be.visible')
+        cy.getBySel('user-settings-form').should('be.visible')
   });
 
   // ──────────────────────────────────────────────
@@ -104,10 +109,11 @@ describe("Navigation principale", () => {
   it("SC27 - devrait naviguer vers Bank Accounts", () => {
     // TODO :
     // 1. Cliquer sur "Bank Accounts" dans la sidebar
-    //    cy.getBySel('sidenav-bankaccounts').click()
+        cy.getBySel('sidenav-bankaccounts').click()
     // 2. Vérifier que l'URL contient '/bankaccounts'
+        cy.url().should('contain', '/bankaccounts')
     // 3. Vérifier que la liste de comptes bancaires est visible
-    //    cy.getBySel('bankaccount-list').should('be.visible')
+        cy.getBySel('bankaccount-list').should('be.visible')
   });
 
   // ──────────────────────────────────────────────
@@ -116,10 +122,11 @@ describe("Navigation principale", () => {
   it("SC28 - devrait naviguer vers la page des notifications", () => {
     // TODO :
     // 1. Cliquer sur "Notifications" dans la sidebar
-    //    cy.getBySel('sidenav-notifications').click()
+        cy.getBySel('sidenav-notifications').click()
     // 2. Vérifier que l'URL contient '/notifications'
+        cy.url().should('contain', '/notifications')
     // 3. Vérifier que la liste des notifications est visible
-    //    cy.getBySel('notifications-list').should('be.visible')
+        cy.getBySel('notifications-list').should('be.visible')
   });
 
   // ──────────────────────────────────────────────
@@ -128,11 +135,11 @@ describe("Navigation principale", () => {
   it("SC29 - devrait afficher les 3 onglets de transactions", () => {
     // TODO :
     // 1. Vérifier que l'onglet "Everyone" est visible
-    //    cy.getBySel('nav-public-tab').should('be.visible')
+        cy.getBySel('nav-public-tab').should('be.visible')
     // 2. Vérifier que l'onglet "Friends" est visible
-    //    cy.getBySel('nav-contacts-tab').should('be.visible')
+        cy.getBySel('nav-contacts-tab').should('be.visible')
     // 3. Vérifier que l'onglet "Mine" est visible
-    //    cy.getBySel('nav-personal-tab').should('be.visible')
+        cy.getBySel('nav-personal-tab').should('be.visible')
   });
 
   // ──────────────────────────────────────────────
@@ -141,14 +148,17 @@ describe("Navigation principale", () => {
   it("SC30 - devrait changer le contenu en cliquant sur chaque onglet", () => {
     // TODO :
     // 1. Cliquer sur l'onglet "Friends"
-    //    cy.getBySel('nav-contacts-tab').click()
+        cy.getBySel('nav-contacts-tab').click()
     // 2. Vérifier que l'URL a changé (contient '/contacts')
+        cy.url().should('contain', '/contacts')
     // 3. Cliquer sur l'onglet "Mine"
-    //    cy.getBySel('nav-personal-tab').click()
+        cy.getBySel('nav-personal-tab').click()
     // 4. Vérifier que l'URL contient '/personal'
+        cy.url().should('contain', '/personal')
     // 5. Revenir sur "Everyone"
-    //    cy.getBySel('nav-public-tab').click()
+        cy.getBySel('nav-public-tab').click()
     // 6. Vérifier que l'URL revient à la racine
+        cy.url().should('contain', '/')
   });
 
   // ──────────────────────────────────────────────
@@ -157,9 +167,10 @@ describe("Navigation principale", () => {
   it("SC31 - devrait naviguer vers la création de transaction via le bouton +", () => {
     // TODO :
     // 1. Cliquer sur le bouton "New" dans la barre de navigation du haut
-    //    cy.getBySel('nav-top-new-transaction').click()
+        cy.getBySel('nav-top-new-transaction').click()
     // 2. Vérifier que l'URL contient '/transaction/new'
+        cy.url().should('contain', '/transaction/new')
     // 3. Vérifier que la liste de contacts est visible
-    //    cy.getBySel('users-list').should('be.visible')
+        cy.getBySel('users-list').should('be.visible')
   });
 });
